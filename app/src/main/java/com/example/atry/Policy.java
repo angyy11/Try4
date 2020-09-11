@@ -19,17 +19,28 @@ public class Policy extends AppCompatActivity implements NavigationView.OnNaviga
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.policy);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         drawer = findViewById(R.id.drawer_layout);
+        navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
     }
+    @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else{
+            super.onBackPressed();
+        }
 
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
@@ -53,4 +64,5 @@ public class Policy extends AppCompatActivity implements NavigationView.OnNaviga
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

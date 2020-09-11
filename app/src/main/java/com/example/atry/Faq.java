@@ -22,6 +22,7 @@ public class Faq extends AppCompatActivity implements NavigationView.OnNavigatio
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.faq);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigationView = findViewById(R.id.nav_view);
@@ -29,8 +30,8 @@ public class Faq extends AppCompatActivity implements NavigationView.OnNavigatio
 
         drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        //drawer.addDrawerListener(toggle);
+       // toggle.syncState();
     }
 
     public void Rating(View view) {
@@ -80,5 +81,15 @@ public class Faq extends AppCompatActivity implements NavigationView.OnNavigatio
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else{
+            super.onBackPressed();
+        }
+
     }
 }

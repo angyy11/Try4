@@ -12,7 +12,7 @@ public class Food extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating);
+        setContentView(R.layout.activity_food_beverage);
         Intent intent = getIntent();
     }
     public void back4(View view){
